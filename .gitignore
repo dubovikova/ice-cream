@@ -1,0 +1,44 @@
+# PyCharm
+.idea/
+.idea
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Временные файлы
+*.log
+*.pot
+*.DS_Store
+*.swp
+*~
+
+# Дистрибутивы и сборки
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Тесты
+.pytest_cache/
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Дополнительные файлы
+*.bak
+*.swp
+*.swo
