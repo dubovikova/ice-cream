@@ -1,9 +1,9 @@
 print("🐱Добро пожаловать в кафе Meow-Meow!🍨🍦🍧")
 name = input("🐱Напишите ваше имя: ")
 def menu(choices, title, promt):
-    print("__________________________")
+    print((len(title) + 2) * "_")
     print(title)
-    print("__________________________")
+    print((len(title) + 2) * "_")
     i = 1
     for c in choices:
         print(i, c)
@@ -16,7 +16,7 @@ flavors = ["Клубника", "Мята", "Шоколад", "Ваниль", "М
 toppings = ["Вишенка", "Карамельная поливка", "Мармеладки", "Взбитые сливки", "Кусочки шоколада", "Зефирки"]
 product = menu(products, "🐱Еда/напитки🐱", "🐱Введите номер еды/напитка: ")
 flavor = menu(flavors, "🐱Вкусы🐱", "🐱Введите номер вкуса: ")
-topping = menu(toppings, "🐱Добавки и топпинги🐱", "🐱Введите номер топпинга:")
+topping = menu(toppings, "🐱Добавки и топпинги🐱", "🐱Введите номер топпинга: ")
 print("🐱Ваш заказ,", name, ":")
 print("🐱Еда/напиток: ", product)
 print("🐱Вкус: ", flavor)
