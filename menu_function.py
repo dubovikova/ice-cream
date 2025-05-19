@@ -5,8 +5,8 @@ def menu(choices, title, promt):
     for c in choices:
         print(i, c)
         i += 1
-    option = input(promt)
-    answer = choices[int(option) - 1]
+    choice = input(promt)
+    answer = choices[int(choice) - 1]
     return answer
 products = ["Капкейк", "Мороженое", "Эклер", "Коктейль", "Горячий шоколад"]
 flavors = ["Клубника", "Мята", "Шоколад", "Ваниль", "Малина", "Карамель", "Банан", "Сгущёнка"]
