@@ -1,3 +1,3 @@
 f = open("products.txt", encoding="UTF-8")
-products = f.read()
+products = f.readlines()
 print(products)
