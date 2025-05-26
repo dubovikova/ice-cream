@@ -63,7 +63,10 @@ def get_order():
 
 
 def print_order(order):
-    print(order)
+    print("Имя: ", order["name"])
+    print("Еда/напиток: ", order["product"])
+    print("Вкус: ", order["flavor"])
+    print("Топпинг: ", order["topping"])
     return
 
 
