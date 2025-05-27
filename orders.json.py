@@ -1,6 +1,10 @@
 import json
 
-order = {"name": "Полина", "product": "Капкейк", "flavor": "Шоколад", "topping": "Взбитые сливки"}
+orders = []
+order = {"name": "Котик", "product": "Коктейль", "flavor": "Клубника", "topping": "Сахарная пудра"}
+order1 = {"name": "Полина", "product": "Эклер", "flavor": "Шоколад", "topping": "Крем"}
+orders.append(order)
+orders.append(order1)
 f = open("orders_json.txt", "w", encoding="UTF-8")
-json.dump(order, f, ensure_ascii=False)
+json.dump(orders, f, ensure_ascii=False, indent=4)
 f.close()
