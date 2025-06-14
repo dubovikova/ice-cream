@@ -1,7 +1,7 @@
 import json
 
 order1 = {"name": "Кот Кот Кот Кот Котульки", "product": "Горячий шоколад", "flavor": "Карамель", "topping": "Зефирки"}
-order2 = {"name": "Котокусь", "product": "Мороженое", "flavor": "Ваниль", "topping": "Вишенка"}
+order2 = {"name": "Котокусь", "product": "Мороженое", "flavor": "Ваниль", "topping": "Шоколадка"}
 order3 = {"name": "Котокекс", "product": "Капкейк", "flavor": "Шоколад", "topping": "Взбитые сливки"}
 orders = []
 orders.append(order1)
