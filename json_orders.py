@@ -21,4 +21,3 @@ def load_orders(filename):
         f = open(filename, "r")
         orders = json.load(f)
         return orders
-    
