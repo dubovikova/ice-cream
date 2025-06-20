@@ -1,14 +1,20 @@
 [
     {
-        "name": "Erik",
-        "drink": "coffee",
-        "flavor": "caramel",
-        "topping": "chocolate"
+        "name": "Кот Кот Кот Кот Котульки",
+        "product": "Капкейк",
+        "flavor": "Ваниль",
+        "topping": "Вишенка"
     },
     {
-        "name": "Alex",
-        "drink": "chocolate",
-        "flavor": "vanilla",
-        "topping": "caramel"
+        "name": "Полина",
+        "product": "Круассан",
+        "flavor": "Шоколад",
+        "topping": "Кусочки шоколада"
+    },
+    {
+        "name": "Джулия",
+        "product": "Кофе",
+        "flavor": "Ваниль",
+        "topping": "Сахарная пудра"
     }
 ]

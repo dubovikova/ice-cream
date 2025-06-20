@@ -6,14 +6,18 @@ def main_menu(orders):
         print("___________________________________________")
         print("🐱Добро пожаловать в кафе Meow-Meow!🍨🍦🍧")
         order = get_order()
-        print("Проверьте заказ:")
-        print_order(order)
-        confirm = input("Все верно? Чтобы подтвердить заказ, введите 'да' чтобы отклонить заказ, введите 'нет': ")
-        if confirm == "да" or confirm == "ДА" or confirm == "Да" or confirm == "дА":
-            orders.append(order)
-            print("🐱Спасибо за заказ!🐱")
+        if order == {}:
+            print("🐱Завершение работы...")
+            return
         else:
-            continue
+            print("🐱Проверьте заказ:")
+            print_order(order)
+            confirm = input("Все верно? Чтобы подтвердить заказ, введите 'да' чтобы отклонить заказ, введите 'нет': ")
+            if confirm == "да" or confirm == "ДА" or confirm == "Да" or confirm == "дА":
+                orders.append(order)
+                print("🐱Спасибо за заказ!🐱")
+            else:
+                continue
 
 
 def read_menu(filename):
@@ -56,14 +60,18 @@ def menu(choices, title="Меню", promt="Введите номер: "):
 
 def get_order():
     order = {}
-    order["name"] = input("🐱Напишите ваше имя: ")
-    products = read_menu("products.txt")
-    flavors = read_menu("flavors.txt")
-    toppings = read_menu("toppings.txt")
-    order["product"] = menu(products, "🐱Еда/напитки🐱", "🐱Введите номер еды/напитка: ")
-    order["flavor"] = menu(flavors, "🐱Вкусы🐱", "🐱Введите номер вкуса: ")
-    order["topping"] = menu(toppings, "🐱Добавки и топпинги🐱", "🐱Введите номер топпинга: ")
-    return order
+    name = input("🐱Напишите ваше имя, для выхода нажмите Enter: ")
+    if name == "":
+        return {}
+    else:
+        order["name"] = name
+        products = read_menu("products.txt")
+        flavors = read_menu("flavors.txt")
+        toppings = read_menu("toppings.txt")
+        order["product"] = menu(products, "🐱Еда/напитки🐱", "🐱Введите номер еды/напитка: ")
+        order["flavor"] = menu(flavors, "🐱Вкусы🐱", "🐱Введите номер вкуса: ")
+        order["topping"] = menu(toppings, "🐱Добавки и топпинги🐱", "🐱Введите номер топпинга: ")
+        return order
 
 
 def print_order(order):
@@ -76,12 +84,17 @@ def print_order(order):
 def load_orders(filename):
     if os.path.exists(filename):
         f = open(filename, "r")
-        orders = json.load(f)
+        with open(filename, "r", encoding="UTF-8") as f:
+            orders = json.load(f)
+        return orders
+    else:
+        orders = {}
         return orders
 
 def save_orders(orders, filename):
-    f = open(filename , "w", encoding="UTF-8")
-    json.dump(orders, f, ensure_ascii=False, indent=4)
+    with open(filename, "w", encoding="UTF-8") as f:
+        f = open(filename , "w", encoding="UTF-8")
+        json.dump(orders, f, ensure_ascii=False, indent=4)
     return
 
 orders = load_orders("orders.json")
