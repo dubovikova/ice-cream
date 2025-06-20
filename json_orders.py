@@ -1,4 +1,7 @@
-def main_menu():
+import os
+import json
+
+def main_menu(orders):
     while True:
         print("___________________________________________")
         print("🐱Добро пожаловать в кафе Meow-Meow!🍨🍦🍧")
@@ -7,7 +10,7 @@ def main_menu():
         print_order(order)
         confirm = input("Все верно? Чтобы подтвердить заказ, введите 'да' чтобы отклонить заказ, введите 'нет': ")
         if confirm == "да" or confirm == "ДА" or confirm == "Да" or confirm == "дА":
-            save_order(order)
+            orders.append(order)
             print("🐱Спасибо за заказ!🐱")
         else:
             continue
@@ -70,10 +73,17 @@ def print_order(order):
     print("🐱Топпинг: ", order["topping"])
     return
 
+def load_orders(filename):
+    if os.path.exists(filename):
+        f = open(filename, "r")
+        orders = json.load(f)
+        return orders
 
-def save_order(order):
-    print("🐱Заказ сохраняется...")
+def save_orders(orders, filename):
+    f = open(filename , "w", encoding="UTF-8")
+    json.dump(orders, f, ensure_ascii=False, indent=4)
     return
 
-
-main_menu()
+orders = load_orders("orders.json")
+main_menu(orders)
+save_orders(orders, "orders.json")
