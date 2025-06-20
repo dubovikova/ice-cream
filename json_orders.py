@@ -1,6 +1,7 @@
 import os
 import json
 
+
 def main_menu(orders):
     while True:
         print("___________________________________________")
@@ -12,7 +13,9 @@ def main_menu(orders):
         else:
             print("🐱Проверьте заказ:")
             print_order(order)
-            confirm = input("Все верно? Чтобы подтвердить заказ, введите 'да' чтобы отклонить заказ, введите 'нет': ")
+            confirm = input(
+                "Все верно? Чтобы подтвердить заказ, введите 'да' чтобы отклонить заказ, введите 'нет': "
+            )
             if confirm == "да" or confirm == "ДА" or confirm == "Да" or confirm == "дА":
                 orders.append(order)
                 print("🐱Спасибо за заказ!🐱")
@@ -68,9 +71,13 @@ def get_order():
         products = read_menu("products.txt")
         flavors = read_menu("flavors.txt")
         toppings = read_menu("toppings.txt")
-        order["product"] = menu(products, "🐱Еда/напитки🐱", "🐱Введите номер еды/напитка: ")
+        order["product"] = menu(
+            products, "🐱Еда/напитки🐱", "🐱Введите номер еды/напитка: "
+        )
         order["flavor"] = menu(flavors, "🐱Вкусы🐱", "🐱Введите номер вкуса: ")
-        order["topping"] = menu(toppings, "🐱Добавки и топпинги🐱", "🐱Введите номер топпинга: ")
+        order["topping"] = menu(
+            toppings, "🐱Добавки и топпинги🐱", "🐱Введите номер топпинга: "
+        )
         return order
 
 
@@ -80,6 +87,7 @@ def print_order(order):
     print("🐱Вкус: ", order["flavor"])
     print("🐱Топпинг: ", order["topping"])
     return
+
 
 def load_orders(filename):
     if os.path.exists(filename):
@@ -91,11 +99,13 @@ def load_orders(filename):
         orders = {}
         return orders
 
+
 def save_orders(orders, filename):
     with open(filename, "w", encoding="UTF-8") as f:
-        f = open(filename , "w", encoding="UTF-8")
+        f = open(filename, "w", encoding="UTF-8")
         json.dump(orders, f, ensure_ascii=False, indent=4)
     return
+
 
 orders = load_orders("orders.json")
 main_menu(orders)
