@@ -1,20 +1,14 @@
 [
     {
-        "name": "Кот Кот Кот Кот Котульки",
-        "product": "Горячий шоколад",
-        "flavor": "Карамель",
-        "topping": "Зефирки"
+        "name": "Erik",
+        "drink": "coffee",
+        "flavor": "caramel",
+        "topping": "chocolate"
     },
     {
-        "name": "Котокусь",
-        "product": "Мороженое",
-        "flavor": "Ваниль",
-        "topping": "Вишенка"
-    },
-    {
-        "name": "Котокекс",
-        "product": "Капкейк",
-        "flavor": "Шоколад",
-        "topping": "Взбитые сливки"
+        "name": "Alex",
+        "drink": "chocolate",
+        "flavor": "vanilla",
+        "topping": "caramel"
     }
 ]
