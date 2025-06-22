@@ -10,3 +10,8 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/hello/<name>")
+
+def greet(name="Stranger"):
+    return render_template("greeting.html", name=name)
