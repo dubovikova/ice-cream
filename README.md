@@ -2,6 +2,6 @@
 
 .\.venv\Scripts\activate 
 
-python .\first_app.py   
+python .\first_app.py
 
 ```
