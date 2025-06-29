@@ -37,7 +37,7 @@ toppings = {
     "marshmallows": "Зефирки",
     "pieces-of-chocolate": "Кусочки шоколада",
     "caramel-sause": "Карамельный соус",
-    "Powdered sugar": "Сахарная пудра"
+    "powdered-sugar": "Сахарная пудра"
 }
 
 @app.route('/order', methods=['GET', 'POST'])
