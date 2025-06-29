@@ -11,7 +11,7 @@ def greet(name="Stranger"):
     return render_template("greeting.html", name=name)
 
 # Русские названия для кодов
-names = {
+products = {
     "cupcake": "Капкейк",
     "ice-cream": "Мороженое",
     "eclair": "Эклер",
@@ -22,12 +22,22 @@ names = {
     "coffee": "Кофе"
 }
 
+flavors = {
+    "vanilla": "Ваниль",
+    "chocolate": "Шоколад",
+    "strawberry": "Клубника",
+    "mint": "Мята",
+    "caramel": "Карамель"
+}
+
 @app.route('/order', methods=['GET', 'POST'])
 def order():
     if request.method == 'POST':
-        product_code = request.form.get('product')  # "tea", "croissant" и т.п.
-        product_name = names.get(product_code, "Неизвестно")  # "Чай", "Круассан"
-        return render_template("thank_you.html", product=product_name) 
+        product_code = request.form.get('product')
+        product_name = products.get(product_code, "Неизвестно")
+        flavor_code = request.form.get('flavor')
+        flavor_name = flavors.get(flavor_code, "Неизвестно")
+        return render_template("thank_you.html", product=product_name, flavor=flavor_name)
     return render_template("forms.html")
 
 # 🚨 ВАЖНО: запускаем сервер только после всех маршрутов
