@@ -43,13 +43,14 @@ toppings = {
 @app.route('/order', methods=['GET', 'POST'])
 def order():
     if request.method == 'POST':
+        name = request.form.get('name')
         product_code = request.form.get('product')
         product_name = products.get(product_code, "Неизвестно")
         flavor_code = request.form.get('flavor')
         flavor_name = flavors.get(flavor_code, "Неизвестно")
         topping_code = request.form.get('topping')
         topping_name = toppings.get(topping_code, "Неизвестно")
-        return render_template("thank_you.html", product=product_name, flavor=flavor_name, topping=topping_name)
+        return render_template("thank_you.html", product=product_name, flavor=flavor_name, topping=topping_name, name=name)
     return render_template("forms.html")
 
 # 🚨 ВАЖНО: запускаем сервер только после всех маршрутов
