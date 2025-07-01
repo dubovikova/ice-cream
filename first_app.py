@@ -1,4 +1,25 @@
 from flask import Flask, render_template, request
+import os
+import json
+
+def load_orders(filename):
+    if os.path.exists(filename):
+        f = open(filename, "r")
+        with open(filename, "r", encoding="UTF-8") as f:
+            orders = json.load(f)
+        return orders
+    else:
+        orders = {}
+        return orders
+
+
+def save_orders(orders, filename):
+    with open(filename, "w", encoding="UTF-8") as f:
+        f = open(filename, "w", encoding="UTF-8")
+        json.dump(orders, f, ensure_ascii=False, indent=4)
+    return
+
+orders = load_orders("orders.json")
 
 app = Flask(__name__)
 
@@ -50,7 +71,16 @@ def order():
         flavor_name = flavors.get(flavor_code, "Неизвестно")
         topping_code = request.form.get('topping')
         topping_name = toppings.get(topping_code, "Неизвестно")
-        return render_template("thank_you.html", product=product_name, flavor=flavor_name, topping=topping_name, name=name)
+        new_order = {
+            "name": name,
+            "product": product_name,
+            "flavor": flavor_name,
+            "topping": topping_name
+        }
+        orders.append(new_order)
+        save_orders(orders, "orders.json")
+        return render_template(
+            "thank_you.html", new_order=new_order)
     return render_template("forms.html")
 
 # 🚨 ВАЖНО: запускаем сервер только после всех маршрутов
