@@ -1,8 +1,9 @@
-Клубника
-Мята
-Шоколад
-Ваниль
-Малина
-Карамель
-Банан
-Сгущёнка
+strawberry=Клубника
+mint=Мята
+chocolate=Шоколад
+vanilla=Ваниль
+raspberry=Малина
+caramel=Карамель
+banana=Банан
+condensed-milk=Сгущёнка
+fruits=Фрукты

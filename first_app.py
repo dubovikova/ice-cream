@@ -12,6 +12,18 @@ def load_orders(filename):
         orders = {}
         return orders
 
+def read_menu(filename):
+    menu_dict = {}
+    with open(filename, encoding="UTF-8") as f:
+        for line in f:
+            if '=' in line:
+                key, value = line.strip().split('=', 1)
+                menu_dict[key] = value
+    return menu_dict
+
+products = read_menu("products.txt")
+flavors = read_menu("flavors.txt")
+toppings = read_menu("toppings.txt")
 
 def save_orders(orders, filename):
     with open(filename, "w", encoding="UTF-8") as f:
@@ -30,36 +42,6 @@ def index():
 @app.route("/hello/<name>")
 def greet(name="Stranger"):
     return render_template("greeting.html", name=name)
-
-# Русские названия для кодов
-products = {
-    "cupcake": "Капкейк",
-    "ice-cream": "Мороженое",
-    "eclair": "Эклер",
-    "croissant": "Круассан",
-    "cocktail": "Коктейль",
-    "hot-chocolate": "Горячий шоколад",
-    "tea": "Чай",
-    "coffee": "Кофе"
-}
-
-flavors = {
-    "vanilla": "Ваниль",
-    "chocolate": "Шоколад",
-    "strawberry": "Клубника",
-    "mint": "Мята",
-    "caramel": "Карамель"
-}
-
-toppings = {
-    "cherry": "Вишенка",
-    "sprinkles": "Посыпка",
-    "chocolate-sause": "Шоколадный соус",
-    "marshmallows": "Зефирки",
-    "pieces-of-chocolate": "Кусочки шоколада",
-    "caramel-sause": "Карамельный соус",
-    "powdered-sugar": "Сахарная пудра"
-}
 
 @app.route('/order', methods=['GET', 'POST'])
 def order():
@@ -81,8 +63,11 @@ def order():
         save_orders(orders, "orders.json")
         return render_template(
             "thank_you.html", new_order=new_order)
-    return render_template("forms.html")
-
-# 🚨 ВАЖНО: запускаем сервер только после всех маршрутов
+    return render_template(
+        "forms.html",
+        products=products,
+        flavors=flavors,
+        toppings=toppings
+    )
 if __name__ == "__main__":
     app.run(debug=True)

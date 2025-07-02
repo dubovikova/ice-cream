@@ -12,41 +12,29 @@
     <p></p>
     <label for="product">🐱Выберите напиток или десерт:</label>
     <select name="product" id="product" required>
-      <option value="" hidden>---</option>
-      <option value="cupcake">Капкейк</option>
-      <option value="ice-cream">Мороженое</option>
-      <option value="eclair">Эклер</option>
-      <option value="croissant">Круассан</option>
-      <option value="cocktail">Коктейль</option>
-      <option value="hot-chocolate">Горячий шоколад</option>
-      <option value="tea">Чай</option>
-      <option value="coffee">Кофе</option>
+       <option value="" hidden>---</option>
+       {% for code, name in products.items() -%}
+      <option value="{{ code }}">{{ name }}</option>
+      {% endfor %}
     </select>
     <p></p>
         <label for="flavor">🐱Выберите вкус:</label>
     <select name="flavor" id="flavor" required>
       <option value="" hidden>---</option>
-      <option value="strawberry">Клубника</option>
-      <option value="mint">Мята</option>
-      <option value="chocolate">Шоколад</option>
-      <option value="vanilla">Ваниль</option>
-      <option value="caramel">Карамель</option>
+      {% for code, name in flavors.items() -%}
+      <option value="{{ code }}">{{ name }}</option>
+      {% endfor %}
     </select>
     <p></p>
     <label for="topping">🐱Выберите топпинг:</label>
     <select name="topping" id="topping">
       <option value="" hidden>---</option>
-      <option value="cherry">Вишенка</option>
-      <option value="sprinkles">Посыпка</option>
-      <option value="chocolate-sause">Шоколадный соус</option>
-      <option value="marshmallows">Зефирки</option>
-      <option value="pieces-of-chocolate">Кусочки шоколада</option>
-      <option value="caramel-sause">Карамельный соус</option>
-      <option value="powdered-sugar">Сахарная пудра</option>
+    {% for code, name in toppings.items() -%}
+    <option value="{{ code }}">{{ name }}</option>
+    {% endfor %}
     </select>
     <p></p>
     <button type="submit">Подтвердить</button>
   </form>
 </body>
 </html\
-
