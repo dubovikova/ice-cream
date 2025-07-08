@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>🐱Orders list🍨🍦🍧</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      margin: 30px auto;
+      min-width: 400px;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+        <th>Имя</th>
+        <th>Напиток/десерт</th>
+        <th>Вкус</th>
+        <th>Топпинг</th>
+    </tr>
+    {% for o in orders -%}
+    <tr>
+        <td>{{ o['name'] }}</td>
+        <td>{{ o['product'] }}</td>
+        <td>{{ o['flavor'] }}</td>
+        <td>{{ o['topping'] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

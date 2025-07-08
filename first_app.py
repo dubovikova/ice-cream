@@ -1,6 +1,25 @@
 from flask import Flask, render_template, request
 import os
 import json
+import sqlite3
+
+def save_order(order):
+    con = sqlite3.connect("orders.db")
+    cur = con.cursor()
+    cur.execute(
+    "INSERT INTO orders(name,product,flavor,topping) VALUES(?,?,?,?);",
+    (order["name"], order["product"], order["flavor"], order["topping"]),
+    ) 
+    con.commit()
+    return
+
+def get_orders():
+    con = sqlite3.connect("orders.db")
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    cur.execute("SELECT * FROM orders;")
+    rows = cur.fetchall()
+    return rows
 
 def load_orders(filename):
     if os.path.exists(filename):
@@ -11,6 +30,13 @@ def load_orders(filename):
     else:
         orders = {}
         return orders
+
+def save_orders(orders, filename):
+    with open(filename, "w", encoding="UTF-8") as f:
+     f = open(filename, "w", encoding="UTF-8")
+    json.dump(orders, f, indent=4)
+    f.close()
+    return
 
 def read_menu(filename):
     menu_dict = {}
@@ -25,13 +51,12 @@ products = read_menu("products.txt")
 flavors = read_menu("flavors.txt")
 toppings = read_menu("toppings.txt")
 
-def save_orders(orders, filename):
-    with open(filename, "w", encoding="UTF-8") as f:
-        f = open(filename, "w", encoding="UTF-8")
-        json.dump(orders, f, ensure_ascii=False, indent=4)
-    return
-
 orders = load_orders("orders.json")
+
+con = sqlite3.connect("orders.db")
+cur = con.cursor()
+cur.execute(
+    "CREATE TABLE IF NOT EXISTS orders(name, product, flavor, topping);")
 
 app = Flask(__name__)
 
@@ -61,13 +86,18 @@ def order():
         }
         orders.append(new_order)
         save_orders(orders, "orders.json")
+        save_order(new_order)
         return render_template(
             "thank_you.html", new_order=new_order)
     return render_template(
         "forms.html",
         products=products,
         flavors=flavors,
-        toppings=toppings
-    )
+        toppings=toppings)
+
+@app.route("/list", methods=["GET"])
+def list():
+    orders = get_orders()
+    return render_template("list.html", orders=orders)
 if __name__ == "__main__":
     app.run(debug=True)

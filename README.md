@@ -1,6 +1,6 @@
 ```sh
 
-.\.venv\Scripts\activate 
+.\.venv\Scripts\activate
 
 python .\first_app.py
 
