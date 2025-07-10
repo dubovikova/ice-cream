@@ -64,10 +64,6 @@ app = Flask(__name__, static_folder='static')
 def index():
     return render_template("greeting.html")
 
-@app.route("/hello/<name>")
-def greet(name="Stranger"):
-    return render_template("greeting.html", name=name)
-
 @app.route('/order', methods=['GET', 'POST'])
 def order():
     if request.method == 'POST':
