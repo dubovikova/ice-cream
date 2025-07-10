@@ -4,4 +4,6 @@
 
 python .\first_app.py
 
+gemini
+
 ```

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import os
 import json
 import sqlite3
@@ -58,7 +58,7 @@ cur = con.cursor()
 cur.execute(
     "CREATE TABLE IF NOT EXISTS orders(name, product, flavor, topping);")
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 @app.route("/")
 def index():
@@ -96,8 +96,9 @@ def order():
         toppings=toppings)
 
 @app.route("/list", methods=["GET"])
-def list():
+def list_orders():
     orders = get_orders()
     return render_template("list.html", orders=orders)
+
 if __name__ == "__main__":
     app.run(debug=True)
