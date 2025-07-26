@@ -96,5 +96,9 @@ def list_orders():
     orders = get_orders()
     return render_template("list.html", orders=orders)
 
+@app.route('/home_page')
+def home_page():
+    return render_template("home_page.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -7,3 +7,4 @@ marshmallows=Зефирки
 cookie=Печенька
 powdered-sugar=Сахарная пудра
 chocolate-sauce=Шоколадный соус
+sprinkles=Посыпка

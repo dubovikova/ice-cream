@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-
 {% block content %}
+
 <head>
   <meta charset="UTF-8">
   <title>🐱Ваш заказ</title>
@@ -12,6 +12,11 @@
   <h4>🐱Вкус: <strong>{{ new_order["flavor"] }}🐱</strong></h4>
   <h4>🐱Топпинг: <strong>{{ new_order["topping"] }}🐱</strong></h4>
   <a href="/order">Сделать новый заказ</a>
+  <p></p>
+  <img src="{{ url_for('static', filename='img/ice-cream.jpg') }}"
+       alt="Конфеты для десертов в ручном стиле">
+  <p></p>
+  Image by <a href="https://ru.freepik.com/free-vector/sweets-desserts-collection-hand-drawn-style_1929896.htm#fromView=image_search_similar&page=1&position=18&uuid=adefb78c-8c6a-459b-8223-ea805ac81767&query=%D0%B4%D1%83%D0%B4%D0%BB+%D1%81%D0%BE+%D0%B2%D0%BA%D1%83%D1%81%D0%BD%D1%8F%D1%88%D0%BA%D0%B0%D0%BC%D0%B8">Freepik</a>
 </body>
 </html>
 {% endblock %}

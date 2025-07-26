@@ -6,3 +6,4 @@ cocktail=Коктейль
 hot-chocolate=Горячий шоколад
 tea=Чай
 coffee=Кофе
+donut=Пончик
